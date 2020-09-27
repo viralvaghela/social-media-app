@@ -12,8 +12,8 @@ dependencies:
   cupertino_icons: ^0.1.3
   http: any
   shared_preferences: ^0.5.12
-  convex_bottom_bar: 2.4.1
   dynamic_theme: ^1.0.0
+  font_awesome_flutter: 8.8.1
 
 dev_dependencies:
   flutter_test:

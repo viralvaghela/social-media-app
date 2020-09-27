@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:dynamic_theme/theme_switcher_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_media/screens/login_screen.dart';
@@ -14,8 +15,6 @@ class MyDrawer extends StatelessWidget {
 
   brightnessChanger() async {
     pref = await SharedPreferences.getInstance();
-
-    // pref.getBool("status") == null ?? pref.setBool("status", true);
 
     pref.getBool("status") == true
         ? pref.setBool("status", false)
@@ -61,7 +60,7 @@ class MyDrawer extends StatelessWidget {
                                     Icons.verified,
                                     color: Colors.white,
                                     size: 20,
-                                  )
+                                  ),
                                 ],
                               )
                             : Text(jsonData['name'])
@@ -74,14 +73,19 @@ class MyDrawer extends StatelessWidget {
                       child: Text("C"),
                     )),
                 ListTile(
-                    leading: Icon(Icons.brightness_4),
+                    leading: FaIcon(FontAwesomeIcons.adjust),
                     title: Text('Dark mode'),
                     onTap: () => showChooser()),
                 ListTile(
-                  leading: Icon(Icons.help),
+                  leading: FaIcon(FontAwesomeIcons.comments),
                   title: Text('Help and Feedback'),
                   onTap: () {},
                 ),
+                ListTile(
+                  leading: FaIcon(FontAwesomeIcons.shareSquare),
+                  title: Text('Share'),
+                  onTap: () {},
+                )
               ],
             ),
           ),

@@ -81,6 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
                 onTap: (index) {
                   if (index == 0) appTitle = "Home";
+                  if (index == 1) appTitle = "Upload";
                   if (index == 2) appTitle = "Profile";
                   mycurrentIndex = index;
                   setState(() {});
