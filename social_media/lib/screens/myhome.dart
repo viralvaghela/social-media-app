@@ -13,7 +13,7 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(child: Text("Homeeeeeeeee")),
+      child: Center(child: Text("Home")),
     );
   }
 }

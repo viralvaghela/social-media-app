@@ -16,9 +16,9 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool isLoading = false;
   TextEditingController emailController =
-      TextEditingController(text: 'payal@gmail.com'); 
+      TextEditingController(); //text: "codingboy0@gmail.com"
   TextEditingController passwordController =
-      TextEditingController(text: 'payal'); 
+      TextEditingController(); //text:"12345"
   bool _rememberMe = false;
 
   @override
@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-              controller: emailController,
+            //  controller: emailController,
             onChanged: (val) {
               emailController.text = val;
             },
@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-             controller: passwordController,
+            // controller: passwordController,
             onChanged: (val) {
               passwordController.text = val;
             },

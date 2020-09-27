@@ -71,23 +71,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       title: Text("Home"),
                       backgroundColor: Colors.black),
                   BottomNavigationBarItem(
+                      icon: Icon(Icons.add),
+                      title: Text("Add"),
+                      backgroundColor: Colors.black),
+                  BottomNavigationBarItem(
                       icon: Icon(Icons.account_circle_rounded),
                       title: Text("Profile"),
                       backgroundColor: Colors.black),
                 ],
                 onTap: (index) {
                   if (index == 0) appTitle = "Home";
-                  if (index == 1) appTitle = "Profile";
+                  if (index == 2) appTitle = "Profile";
                   mycurrentIndex = index;
                   setState(() {});
                   print("current index:$mycurrentIndex");
                 },
               ),
-              floatingActionButton: FloatingActionButton(
-                onPressed: () async {
-                  changeTheme();
-                },
-              ),
+              // floatingActionButton: FloatingActionButton(
+              //   child: Icon(Icons.verified),
+              //   onPressed: () async {
+              //     changeTheme();
+              //   },
+              // ),
             ),
     );
   }
@@ -98,6 +103,4 @@ class _HomeScreenState extends State<HomeScreen> {
             ? Brightness.light
             : Brightness.dark);
   }
-
-  
 }

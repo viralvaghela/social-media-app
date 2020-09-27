@@ -1,6 +1,7 @@
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:social_media/screens/home_screen.dart';
+import 'package:social_media/screens/login_screen.dart';
 
 
 void main() async {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         themedWidgetBuilder: (context, theme) {
           return new MaterialApp(
             debugShowCheckedModeBanner: false,
-              title: 'Flutter Demo', theme: theme, home: HomeScreen());
+              title: 'Flutter Demo', theme: theme, home: LoginScreen());
         });
   }
 }

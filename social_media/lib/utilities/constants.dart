@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:social_media/screens/add_post_screen.dart';
 import 'package:social_media/screens/myhome.dart';
 import 'package:social_media/screens/myprofile.dart';
 
@@ -37,6 +37,7 @@ var appTitle = "Home";
 
 final tabs = [
   MyHome(),
+  AddPost(),
   MyProfile(),
 ];
 

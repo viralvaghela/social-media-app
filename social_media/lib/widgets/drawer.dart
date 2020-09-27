@@ -1,8 +1,9 @@
+import 'dart:ui';
+
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:dynamic_theme/theme_switcher_widgets.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_media/screens/login_screen.dart';
 import 'package:social_media/utilities/constants.dart';
@@ -20,11 +21,23 @@ class MyDrawer extends StatelessWidget {
         ? pref.setBool("status", false)
         : pref.setBool("status", true);
     localbool = pref.getBool("status");
-    print(pref.getBool("status"));
   }
 
   @override
   Widget build(BuildContext context) {
+    void showChooser() {
+      showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return BrightnessSwitcherDialog(
+            onSelectedTheme: (Brightness brightness) {
+              DynamicTheme.of(context).setBrightness(brightness);
+            },
+          );
+        },
+      );
+    }
+
     brightnessChanger();
     return Drawer(
       // column holds all the widgets in the drawer
@@ -36,38 +49,39 @@ class MyDrawer extends StatelessWidget {
               children: <Widget>[
                 UserAccountsDrawerHeader(
                     accountName: jsonData['name'] != null
-                        ? Text(jsonData['name'])
+                        ? jsonData['name'] == "coding boy"
+                            ? Row(
+                                children: [
+                                  Text(
+                                    jsonData['name'],
+                                    style: TextStyle(fontSize: 15),
+                                  ),
+                                  Padding(padding: EdgeInsets.all(5)),
+                                  Icon(
+                                    Icons.verified,
+                                    color: Colors.white,
+                                    size: 20,
+                                  )
+                                ],
+                              )
+                            : Text(jsonData['name'])
                         : Text(" "),
                     accountEmail: jsonData['email'] != null
                         ? Text(jsonData['email'])
                         : Text(" "),
                     currentAccountPicture: CircleAvatar(
                       backgroundColor: Colors.white,
-                      child: Text("A"),
+                      child: Text("C"),
                     )),
                 ListTile(
-                  leading: Icon(Icons.account_circle),
-                  title: Text("Profile"),
-                ),
+                    leading: Icon(Icons.brightness_4),
+                    title: Text('Dark mode'),
+                    onTap: () => showChooser()),
                 ListTile(
-                    leading: Icon(Icons.settings), title: Text('Settings')),
-                ListTile(
-                    leading: Icon(Icons.help),
-                    title: Text('Help and Feedback')),
-                Switch(
-                  activeColor: Colors.pinkAccent,
-                  value: pref.getBool("status"),
-                  onChanged: (value) {
-                    print("VALUE : $value");
-
-                    DynamicTheme.of(context).setBrightness(
-                        Theme.of(context).brightness == Brightness.dark
-                            ? Brightness.light
-                            : Brightness.dark);
-                    brightnessChanger();
-                  },
+                  leading: Icon(Icons.help),
+                  title: Text('Help and Feedback'),
+                  onTap: () {},
                 ),
-                // showChooser(),
               ],
             ),
           ),
