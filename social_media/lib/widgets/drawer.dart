@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_media/screens/login_screen.dart';
 import 'package:social_media/utilities/constants.dart';
+import 'package:social_media/widgets/getUserName.dart';
 
 class MyDrawer extends StatelessWidget {
   bool localbool;
@@ -47,24 +48,7 @@ class MyDrawer extends StatelessWidget {
             child: ListView(
               children: <Widget>[
                 UserAccountsDrawerHeader(
-                    accountName: jsonData['name'] != null
-                        ? jsonData['name'] == "coding boy"
-                            ? Row(
-                                children: [
-                                  Text(
-                                    jsonData['name'],
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  Padding(padding: EdgeInsets.all(5)),
-                                  Icon(
-                                    Icons.verified,
-                                    color: Colors.white,
-                                    size: 20,
-                                  ),
-                                ],
-                              )
-                            : Text(jsonData['name'])
-                        : Text(" "),
+                    accountName: GetUserName(),
                     accountEmail: jsonData['email'] != null
                         ? Text(jsonData['email'])
                         : Text(" "),

@@ -16,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = true;
+
   @override
   void initState() {
     super.initState();
@@ -26,12 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
   void getUserData() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     var response =
-        await http.get("${baseURL + "/" + pref.getString('userToken')}");
+        await http.get("${baseURL + "/user/" + pref.getString('userToken')}");
 
     setState(() {
       jsonData = jsonDecode(response.body);
       isLoading = false;
-      print(jsonData);
+      print(jsonData['verified']);
     });
   }
 
@@ -96,12 +97,5 @@ class _HomeScreenState extends State<HomeScreen> {
               // ),
             ),
     );
-  }
-
-  void changeTheme() {
-    DynamicTheme.of(context).setBrightness(
-        Theme.of(context).brightness == Brightness.dark
-            ? Brightness.light
-            : Brightness.dark);
   }
 }

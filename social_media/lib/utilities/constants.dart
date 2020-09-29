@@ -26,10 +26,11 @@ final kBoxDecorationStyle = BoxDecoration(
   ],
 );
 
-
+///String liveURL =  https://socialmediaviral.herokuapp.com/
 String baseURL = "http://192.168.43.138:5000";
 String userToken = "";
 var jsonData;
+List postData;
 
 //index for the bottomnavbar
 var mycurrentIndex = 0;
@@ -41,7 +42,5 @@ final tabs = [
   MyProfile(),
 ];
 
-
-
 //theme stuff
-bool status=true;
+bool status = true;
